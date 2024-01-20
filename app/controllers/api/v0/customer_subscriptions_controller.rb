@@ -18,7 +18,7 @@ class Api::V0::CustomerSubscriptionsController < ApplicationController
   def create
     @customer_subscription = CustomerSubscription.new(customer_subscription_params)
     if @customer_subscription.save
-      @subscription.update(status: 1)
+      @customer_subscription.subscription.update(status: :active)
       render json: CustomerSubscriptionSerializer.new(@customer_subscription), status: :created
     else
       render json: @customer_subscription.errors, status: :unprocessable_entity
