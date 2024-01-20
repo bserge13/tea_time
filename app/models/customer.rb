@@ -1,8 +1,8 @@
 class Customer < ApplicationRecord
-  validates :first_name, :last_name, :email, :address, presence: true
+  validates :first_name, :last_name, :email, :address, :password, presence: true
   validates :email, uniqueness: true
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
-
-  validates_presence_of :password_digest
+  
+  validates_confirmation_of :password
   has_secure_password
 end
