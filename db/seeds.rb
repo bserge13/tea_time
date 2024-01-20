@@ -9,6 +9,7 @@
 #   end
 
 # TEAS 
+
 tea_1 = Tea.create!(title: "Earl Grey", description: "Combines black tea with bergamot orange extract", temperature: 90, brew_time: 4)
 tea_2 = Tea.create!(title: "Decaf Tea", description: "Tea without caffine", temperature: 90, brew_time: 5)
 tea_3 = Tea.create!(title: "Green Tea", description: "Good for lifting your spirits", temperature: 90, brew_time: 4)
