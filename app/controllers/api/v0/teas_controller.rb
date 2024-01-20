@@ -1,19 +1,19 @@
 class Api::V0::TeasController < ApplicationController
   before_action :set_tea, only: %i[ show update destroy ]
 
-  # GET /teas
+  # GET /api/v0/teas
   def index
     @teas = Tea.all
 
     render json: @teas
   end
 
-  # GET /teas/1
+  # GET /api/v0/teas/1
   def show
     render json: @tea
   end
 
-  # POST /teas
+  # POST /api/v0/teas
   def create
     @tea = Tea.new(tea_params)
 
@@ -24,7 +24,7 @@ class Api::V0::TeasController < ApplicationController
     end
   end
 
-  # PATCH/PUT /teas/1
+  # PATCH/PUT /api/v0/teas/1
   def update
     if @tea.update(tea_params)
       render json: @tea
@@ -33,18 +33,17 @@ class Api::V0::TeasController < ApplicationController
     end
   end
 
-  # DELETE /teas/1
+  # DELETE /api/v0/teas/1
   def destroy
     @tea.destroy!
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tea
+
+  def set_tea
       @tea = Tea.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def tea_params
       params.fetch(:tea, {})
     end

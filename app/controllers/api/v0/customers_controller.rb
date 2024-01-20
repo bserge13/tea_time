@@ -1,19 +1,19 @@
 class Api::V0::CustomersController < ApplicationController
   before_action :set_customer, only: %i[ show update destroy ]
 
-  # GET /customers
+  # GET /api/v0/customers
   def index
     @customers = Customer.all
 
     render json: @customers
   end
 
-  # GET /customers/1
+  # GET /api/v0/customers/1
   def show
     render json: @customer
   end
 
-  # POST /customers
+  # POST /api/v0/customers
   def create
     @customer = Customer.new(customer_params)
 
@@ -24,7 +24,7 @@ class Api::V0::CustomersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /customers/1
+  # PATCH/PUT /api/v0/customers/1
   def update
     if @customer.update(customer_params)
       render json: @customer
@@ -33,18 +33,17 @@ class Api::V0::CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
+  # DELETE /api/v0/customers/1
   def destroy
     @customer.destroy!
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  
     def set_customer
       @customer = Customer.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def customer_params
       params.fetch(:customer, {})
     end

@@ -1,19 +1,19 @@
 class Api::V0::SubscriptionsController < ApplicationController
   before_action :set_subscription, only: %i[ show update destroy ]
 
-  # GET /subscriptions
+  # GET /api/v0/subscriptions
   def index
     @subscriptions = Subscription.all
 
     render json: @subscriptions
   end
 
-  # GET /subscriptions/1
+  # GET /api/v0/subscriptions/1
   def show
     render json: @subscription
   end
 
-  # POST /subscriptions
+  # POST /api/v0/subscriptions
   def create
     @subscription = Subscription.new(subscription_params)
 
@@ -24,7 +24,7 @@ class Api::V0::SubscriptionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /subscriptions/1
+  # PATCH/PUT /api/v0/subscriptions/1
   def update
     if @subscription.update(subscription_params)
       render json: @subscription
@@ -33,18 +33,17 @@ class Api::V0::SubscriptionsController < ApplicationController
     end
   end
 
-  # DELETE /subscriptions/1
+  # DELETE /api/v0/subscriptions/1
   def destroy
     @subscription.destroy!
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_subscription
       @subscription = Subscription.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def subscription_params
       params.fetch(:subscription, {})
     end
