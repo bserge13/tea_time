@@ -27,3 +27,6 @@ tea_15 = Tea.create!(title: "Chai", description: "Though it's technically a blac
 
 # SUBSCRIPTIONS 
 
+sub_1 = Subscription.create!(title: "Bronze", price: 25, frequency: 3)
+sub_2 = Subscription.create!(title: "Silver", price: 45, frequency: 6)
+sub_3 = Subscription.create!(title: "Gold", price: 60, frequency: 12)
