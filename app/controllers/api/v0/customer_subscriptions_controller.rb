@@ -16,9 +16,8 @@ class Api::V0::CustomerSubscriptionsController < ApplicationController
   # POST /api/v0/customer_subscriptions
   def create
     @customer_subscription = CustomerSubscription.new(customer_subscription_params)
-
     if @customer_subscription.save
-      render json: @customer_subscription, status: :created, location: @customer_subscription
+      render json: CustomerSubscriptionSerializer.new(@customer_subscription), status: :created
     else
       render json: @customer_subscription.errors, status: :unprocessable_entity
     end
