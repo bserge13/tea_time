@@ -1,4 +1,4 @@
-class TeasController < ApplicationController
+class Api::V0::TeasController < ApplicationController
   before_action :set_tea, only: %i[ show update destroy ]
 
   # GET /teas

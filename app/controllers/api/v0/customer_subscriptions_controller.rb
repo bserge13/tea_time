@@ -1,4 +1,4 @@
-class CustomerSubscriptionsController < ApplicationController
+class Api::V0::CustomerSubscriptionsController < ApplicationController
   before_action :set_customer_subscription, only: %i[ show update destroy ]
 
   # GET /customer_subscriptions

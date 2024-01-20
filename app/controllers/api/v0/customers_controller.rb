@@ -1,4 +1,4 @@
-class CustomersController < ApplicationController
+class Api::V0::CustomersController < ApplicationController
   before_action :set_customer, only: %i[ show update destroy ]
 
   # GET /customers
