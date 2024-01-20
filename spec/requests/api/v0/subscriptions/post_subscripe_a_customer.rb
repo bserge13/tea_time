@@ -31,11 +31,13 @@ RSpec.describe 'Subscriptions' do
 
       custsub_params = { subscription_id: @subs.id, customer_id: @lucas.id }
       expect(CustomerSubscription.count).to eq 0
-
       post '/api/v0/customer_subscriptions', headers: header, params: JSON.generate(custsub_params)
       expect(response).to be_successful
       expect(response.status).to eq 201
-      expect(CustomerSubscription.count).to eq 1
+
+      contract = CustomerSubscription.last 
+      expect(contract.customer).to eq @lucas
+      expect(contract.subscription).to eq @subs 
       expect(@subs.reload.status).to eq("active")
     end
   end
