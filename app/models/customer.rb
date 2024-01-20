@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-  validates :first_name, :last_name, :email, :address presence: true
+  validates :first_name, :last_name, :email, :address, presence: true
   validates :email, uniqueness: true
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
 
