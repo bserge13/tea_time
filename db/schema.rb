@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_20_172106) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_20_180212) do
   create_table "customer_subscriptions", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "subscription_id", null: false
@@ -28,6 +28,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_20_172106) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subscription_teas", force: :cascade do |t|
+    t.integer "tea_id", null: false
+    t.integer "subscription_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscription_id"], name: "index_subscription_teas_on_subscription_id"
+    t.index ["tea_id"], name: "index_subscription_teas_on_tea_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -50,4 +59,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_20_172106) do
 
   add_foreign_key "customer_subscriptions", "customers"
   add_foreign_key "customer_subscriptions", "subscriptions"
+  add_foreign_key "subscription_teas", "subscriptions"
+  add_foreign_key "subscription_teas", "teas"
 end
