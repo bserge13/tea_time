@@ -11,4 +11,9 @@ RSpec.describe Subscription, type: :model do
   describe 'enum' do
     it { should define_enum_for(:status).with_values(inactive: 0, active: 1) }
   end
+
+  describe 'relationships' do 
+    it { should have_many(:customer_subscriptions) }
+    it { should have_many(:customers).through (:customer_subscriptions) }
+  end 
 end
