@@ -1,20 +1,5 @@
 class Api::V0::CustomerSubscriptionsController < ApplicationController
-  before_action :set_customer#, only: %i[ show update destroy ]
-  before_action :set_subscription#, only: %i[ show update destroy ]
-
-  # GET /api/v0/customer_subscriptions
-  def index
-    @customer_subscriptions = CustomerSubscription.all
-
-    render json: @customer_subscriptions
-  end
-
-  # GET /api/v0/customer_subscriptions/1
-  def show
-    render json: @customer_subscription
-  end
-
-  # POST /api/v0/customer_subscriptions
+# POST /api/v0/customer_subscriptions
   def create
     @customer_subscription = CustomerSubscription.new(customer_subscription_params)
     if @customer_subscription.save
@@ -35,23 +20,14 @@ class Api::V0::CustomerSubscriptionsController < ApplicationController
   end
 
   # DELETE /api/v0/customer_subscriptions/1
-  def destroy
-    @customer_subscription.destroy!
-  end
+  # def destroy
+  #   @customer_subscription = CustomerSubscription.find_by(customer_id: params[:customer_id], subscription_id: params[:subscription_id])
+  #   if @customer_subscription.present? 
+  #     @customer_subscription
+  #   end
+  # end
 
   private
-
-    def set_customer_subscription
-      @customer_subscription = CustomerSubscription.find(params[:id])
-    end
-    
-    def set_customer
-      @customer = Customer.find(params[:customer_id])
-    end
-
-    def set_subscription
-      @subscription = Subscription.find(params[:subscription_id])
-    end
 
     def customer_subscription_params
       params.require(:customer_subscription).permit(:customer_id, :subscription_id)
