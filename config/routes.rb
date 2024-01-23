@@ -10,12 +10,17 @@ Rails.application.routes.draw do
 
   namespace :api do 
     namespace :v0 do 
+      resources :customer_subscriptions
       patch '/customer_subscriptions/cancel_subscription/:id', to: 'customer_subscriptions#cancel_sub'
       get '/customer_subscriptions/:customer_id/subscriptions', to: 'customer_subscriptions#index'
-      resources :customers
-      resources :customer_subscriptions
-      resources :subscriptions
-      resources :teas
+      
+      # this refactor is sending failures in expected responses. Would be a factor area 
+      # for me with more time. Errors are- expecting response to be a 401 but returning a 404 instead.
+      
+      # resources :customer_subscriptions do 
+      #   patch 'cancel_subscription/:id', to: 'customer_subscriptions#cancel_sub'
+      #   get ':customer_id/subscriptions', to: 'customer_subscriptions#index'
+      # end 
     end
   end
 end
