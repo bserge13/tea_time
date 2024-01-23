@@ -45,5 +45,18 @@ RSpec.describe 'Subscriptions' do
       expect(subs[:data][1][:attributes][:status]).to eq "cancelled"
       expect(subs[:data][1][:attributes][:tea_count]).to eq 0 
     end
+
+    it 'sad path- requires a valid customer to cancel a subscription' do 
+      header = { CONTENT_TYPE: 'application/json',
+      ACCEPT: 'application/json' }
+
+      get "/api/v0/customer_subscriptions/00/subscriptions", headers: header
+      expect(response).to_not be_successful
+      expect(response.status).to eq 404 
+
+      error = JSON.parse(response.body, symbolize_names: true)
+      expect{Customer.find(00)}.to raise_error(ActiveRecord::RecordNotFound)
+      expect(error[:exception]).to eq("#<ActiveRecord::RecordNotFound: Couldn't find Customer with 'id'=00>")
+    end 
   end 
 end 

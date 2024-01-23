@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :api do 
     namespace :v0 do 
       resources :customer_subscriptions
-      patch '/customer_subscriptions/cancel_subscription/:id', to: 'customer_subscriptions#cancel_sub'
+      patch '/customer_subscriptions/cancel_subscription/:customer_id', to: 'customer_subscriptions#cancel_sub'
       get '/customer_subscriptions/:customer_id/subscriptions', to: 'customer_subscriptions#index'
       
       # this refactor is sending failures in expected responses. Would be a factor area 
