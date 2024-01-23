@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :api do 
     namespace :v0 do 
       patch '/customer_subscriptions/cancel_subscription/:id', to: 'customer_subscriptions#cancel_sub'
+      get '/customer_subscriptions/:customer_id/subscriptions', to: 'customer_subscriptions#index'
       resources :customers
       resources :customer_subscriptions
       resources :subscriptions
