@@ -21,10 +21,29 @@ RSpec.describe 'Subscriptions' do
       ACCEPT: 'application/json' }
 
       get "/api/v0/customer_subscriptions/#{lucas.id}/subscriptions", headers: header
-      require 'pry'; binding.pry
       expect(response).to be_successful
       expect(response.status).to eq 200 
 
+      subs = JSON.parse(response.body, symbolize_names: true)
+
+      expect(subs[:data][0]).to be_a Hash 
+      expect(subs[:data][0]).to have_key :type 
+      expect(subs[:data][0][:type]).to eq "subscription"
+      expect(subs[:data][0][:attributes]).to have_key :title
+      expect(subs[:data][0][:attributes][:title]).to be_a String 
+      expect(subs[:data][0][:attributes]).to have_key :price
+      expect(subs[:data][0][:attributes][:price]).to be_an Integer
+      expect(subs[:data][0][:attributes]).to have_key :status
+      expect(subs[:data][0][:attributes][:status]).to be_a String
+      expect(subs[:data][0][:attributes][:status]).to eq "active"
+      expect(subs[:data][0][:attributes]).to have_key :frequency
+      expect(subs[:data][0][:attributes][:frequency]).to be_an Integer
+      expect(subs[:data][0][:attributes]).to have_key :tea_count
+      expect(subs[:data][0][:attributes][:tea_count]).to be_an Integer 
+      expect(subs[:data][0][:attributes][:tea_count]).to eq 2 
+
+      expect(subs[:data][1][:attributes][:status]).to eq "cancelled"
+      expect(subs[:data][1][:attributes][:tea_count]).to eq 0 
     end
   end 
 end 
