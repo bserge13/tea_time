@@ -1,17 +1,33 @@
 # Tea Time Services 
 
+## About The API
 Tea Time is an API that works to manage customers tea subscriptions. To use Tea Times' you will either be in the need of creating a subscription for a customer, list an index of all subscriptions (inactive, active or cancelled) for a given customer, or alter a customers subscription status to reflect the neccessary changes. 
 
+## Purpose 
+- An endpoint to subscribe a customer to a tea subscription
+- An endpoint to cancel a customer’s tea subscription
+- An endpoint to see all of a customer’s subsciptions (active and cancelled)
+
+### Built With:
+![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)
+![Postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Rails](https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Postman Badge](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=fff&style=for-the-badge)
 
 ## Getting Started
 
-This project uses Ruby version 3.2.2.
+To get a local copy, follow these simple instructions
 
 ### Database Setup
 
 To initialize the database, run the following commands:
 
-`rails db:{drop,create,migrate,seed}`
+`rails db:{create,migrate}`
+
+### Prerequisites
+- Ruby Version 3.1.2
+- Rails Version 7.0.8
 
 ### Running the Test Suite
 
