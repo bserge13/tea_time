@@ -22,9 +22,9 @@ class Api::V0::CustomerSubscriptionsController < ApplicationController
     end
   end
 
-  # POST /api/v0/customer_subscriptions/cancel_subscription/:id
+  # POST /api/v0/customer_subscriptions/cancel_subscription/:customer_sub_id
   def cancel_sub
-    @customer_subscription = CustomerSubscription.find(params[:customer_id])
+    @customer_subscription = CustomerSubscription.find(params[:customer_sub_id])
     if @customer_subscription.customer.email == params[:email] && @customer_subscription.customer.authenticate(params[:password])
       @customer_subscription.subscription.update(status: :cancelled)
       render json: CustomerSubscriptionSerializer.new(@customer_subscription), status: :ok
