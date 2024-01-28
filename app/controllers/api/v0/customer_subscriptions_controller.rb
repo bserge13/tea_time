@@ -22,7 +22,7 @@ class Api::V0::CustomerSubscriptionsController < ApplicationController
     end
   end
 
-  # POST /api/v0/customer_subscriptions/cancel_subscription/:customer_sub_id
+  # PATCH /api/v0/customer_subscriptions/cancel_subscription/:customer_sub_id
   def cancel_sub
     @customer_subscription = CustomerSubscription.find(params[:customer_sub_id])
     if @customer_subscription.customer.email == params[:email] && @customer_subscription.customer.authenticate(params[:password])

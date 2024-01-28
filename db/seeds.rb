@@ -1,7 +1,7 @@
 # SUBSCRIPTIONS 
 sub_1 = Subscription.create!(title: "Bronze", price: 25, frequency: 3)
 sub_2 = Subscription.create!(title: "Silver", price: 45, frequency: 6)
-sub_3 = Subscription.create!(title: "Gold", price: 60, frequency: 12)
+sub_3 = Subscription.create!(title: "Gold", price: 60, frequency: 12, status: 1)
 
 # TEAS 
 tea_1 = Tea.create!(title: "Earl Grey", description: "Combines black tea with bergamot orange extract", temperature: 90, brew_time: 4, subscription_id: sub_1.id)
@@ -19,3 +19,12 @@ tea_12 = Tea.create!(title: "Citrus Tea", description: "Nice floral notes to bal
 tea_13 = Tea.create!(title: "Honey Ginger Tea", description: "SMooth and warm- best for any day, but especially a cold one", temperature: 91, brew_time: 4, subscription_id: sub_3.id)
 tea_14 = Tea.create!(title: "Floral Tea", description: "Hibiscus notes coupled with rose and lavander", temperature: 92, brew_time: 7, subscription_id: sub_3.id)
 tea_15 = Tea.create!(title: "Chai", description: "Though it's technically a black tea, chai tea has a specific flavor profile and preparation process that differentiates it", temperature: 91, brew_time: 3, subscription_id: sub_3.id)
+
+
+# Customers 
+cust1 = Customer.create!(first_name: 'Justin', last_name: 'Winchester', email: 'war_hammer1@yahoo.com', address: '123 Sesame St', password: 'Password')
+cust2 = Customer.create!(first_name: 'Karl', last_name: 'Jr', email: 'loki_sux1@yahoo.com', address: '123 Main St', password: 'Password')
+
+# CustomerSubscriptions
+CustomerSubscription.create!(customer_id: cust1.id, subscription_id: sub_3.id)
+CustomerSubscription.create!(customer_id: cust2.id, subscription_id: sub_3.id)
