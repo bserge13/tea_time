@@ -99,3 +99,9 @@ To run the server, execute the following command:
 - Customers and Subscriptions are associated through the joins table, CustomerSubscriptions which takes in a customer and subscription id
 - CustomerSubscription functions happy and sad path tested
 - Customer, Subscription, and Tea model tested for validations and relationships  
+
+## PROJECT NOTES 
+
+- [Word Document](https://docs.google.com/document/d/15lyNXkef9XnLaFagkaUc_1Qa1IIL7WfHMjZsKHePNXo/edit?usp=sharing)
+
+- [Miro Board](https://miro.com/app/board/uXjVNzT7Szo=/?share_link_id=257699164912)
