@@ -69,7 +69,7 @@ To run the server, execute the following command:
 - [bcrypt](https://github.com/dcodeIO/bcrypt.js/blob/master/README.md)
     - `gem "bcrypt", "~> 3.1.7"`
 - [json:api](https://jsonapi.org/)
-    `gem 'jsonapi-serializer'`
+    - `gem 'jsonapi-serializer'`
 
 #### Placed in `group :test` block:
 
